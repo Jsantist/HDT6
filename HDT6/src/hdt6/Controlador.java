@@ -45,7 +45,7 @@ public class Controlador{
     
     
     public void newOperation(File datos) throws IOException{
-        //método para ingresar una nueva operación en caso de que no exista ninguna 
+        //método para ingresar un nuevo producto en caso de que no exista ninguno
         BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
         escribir= new FileWriter(datos,true);
         linea = new PrintWriter(escribir);
@@ -78,7 +78,7 @@ public class Controlador{
     }
     
     public void leerOperaciones(File Datos) throws IOException{
-        //método para leer todas las operaciones dentro del archivo
+        //método para leer todas los productos dentro del archivo
         String caracter="",cadena;
         int cont=0;
         Datos = new File("ListadoProducto.txt");
@@ -92,14 +92,14 @@ public class Controlador{
                 String category = products[0].trim().toUpperCase();
                 String product = products[1].trim();
 
-                // Revisa si existe la categoria, si no existe la crea
-                if (inventary.get(category) != null) { // Existe la categoria
+                
+                if (inventary.get(category) != null) { 
                     
                     List<String> currentList = inventary.get(category);
                     currentList.add(product);
                     inventary.put(category, currentList);
                     
-                } else { // No existe la categoria
+                } else { 
                     
                     List<String> newList = new ArrayList<String>();
                     newList.add(product);
