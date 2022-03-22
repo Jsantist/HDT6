@@ -17,7 +17,7 @@ public class HDT6 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        System.out.println("prueba definitiva");
+        
         
         File Archivo;
         Archivo = new File("ListadoProducto.txt");
@@ -25,6 +25,7 @@ public class HDT6 {
         
         System.out.println("Bienvenido a la tiendita online ");
         //si no existe ningún archivo, este lo crea. De lo contrario procede a operar
+        dat.leerOperaciones(Archivo);
         
     }
     

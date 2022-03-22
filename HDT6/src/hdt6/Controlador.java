@@ -18,11 +18,14 @@ import java.util.List;
  *
  * @author jsken
  */
-public class Controlador<T> {
+public class Controlador {
     FileReader leer;
     FileWriter escribir;
     PrintWriter linea;
     BufferedReader almacenamiento;
+    
+    String a = "hola";
+    
     
     BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
     
