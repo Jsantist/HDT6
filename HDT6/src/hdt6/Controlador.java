@@ -126,7 +126,7 @@ public class Controlador{
             System.out.print("\n-> Ingrese el nombre de una categoría, si desea salir pulse la tecla <<s>>: ");
             String category = br.readLine().toUpperCase();
 
-            if (category.equals("X")) {
+            if (category.equals("s")) {
                 Terminar = false;
                 break;
 
@@ -199,9 +199,6 @@ public class Controlador{
 
     }
 
-    /*
-     * Busca el producto en el inventario y muestra de que categoria es
-     */
     public void showCategoryOfAProduct() throws IOException {
         System.out.println("\n Categoría de un producto\n");
 
@@ -228,9 +225,6 @@ public class Controlador{
 
     }
 
-    /*
-     * Espera a que el usuario presione una tecla para continuar la ejecución
-     */
     
     
     
