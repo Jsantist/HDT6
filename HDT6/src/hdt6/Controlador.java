@@ -75,7 +75,7 @@ public class Controlador<T> {
     }
     
     
-    public T Factory(){
+    public void Factory() throws IOException{
         System.out.println(" :: TIENDA ONLINE ::");
 
         // Implementar patron de diseño Factory para seleccionar que tipo de MAP
@@ -90,7 +90,6 @@ public class Controlador<T> {
         collection = factoryMap.getMap(optionMAP);
         inventary = factoryMap.getMap(optionMAP);
         
-        return 
     }
     
     
