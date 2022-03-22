@@ -8,6 +8,22 @@ package hdt6;
  *
  * @author jsken
  */
-public class HashMap {
+public class HashMap<K, V> implements IMap<K, V>{
+
+    @Override
+    public void put(K key, V value) {
+        }
+
+    @Override
+    public V get(K key) {
+        }
+
+    @Override
+    public void delete(K key) {
+      }
+
+    @Override
+    public int size() {
+     }
     
 }
