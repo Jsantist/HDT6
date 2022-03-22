@@ -21,7 +21,7 @@ public class HDT6 {
         
         File Archivo;
         Archivo = new File("ListadoProducto.txt");
-        Datos dat = new Datos();
+        Controlador dat = new Controlador();
         
         System.out.println("Bienvenido a la tiendita online ");
         //si no existe ningún archivo, este lo crea. De lo contrario procede a operar

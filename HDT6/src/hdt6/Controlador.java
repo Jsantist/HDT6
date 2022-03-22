@@ -16,7 +16,7 @@ import java.io.PrintWriter;
  *
  * @author jsken
  */
-public class Datos {
+public class Controlador {
     FileReader leer;
     FileWriter escribir;
     PrintWriter linea;
@@ -51,6 +51,7 @@ public class Datos {
              cont = cont+1;
              caracter=almacenamiento.readLine();
              cadena=caracter;
+             
          }
         
     }
