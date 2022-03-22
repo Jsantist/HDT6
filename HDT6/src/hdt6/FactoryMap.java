@@ -15,27 +15,27 @@ import java.util.List;
 public class FactoryMap {
     
     
-    public IMap<String, List<String>> getMap(int implementacion) throws IOException {
+    public IMap<String, List<String>> getMap(Integer implementacion) throws IOException {
         
-        IMap<String, List<String>> myMap;
+        IMap<String, List<String>> myMap = null;
 
         switch (implementacion) {
             case 1:
                 // HashMap
                 myMap = new HashMapClass<String, List<String>>();
+                break;
+                
             case 2:
                 // TreeMap
                 myMap =  new TreeMapClass<String, List<String>>();
+                break;
             case 3:
                 // LinkedHashMap
                 myMap =  new LinkedHashMapClass<String, List<String>>();
-            default:
-                myMap = null;
-                break;     
-            
+                break;
         }
+                        return myMap;
 
-        return myMap;
     }
    
 }

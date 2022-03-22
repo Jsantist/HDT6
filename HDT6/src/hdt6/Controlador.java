@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author jsken
  */
-public class Controlador     {
+public class Controlador{
     FileReader leer;
     FileWriter escribir;
     PrintWriter linea;
@@ -61,6 +61,22 @@ public class Controlador     {
         
     }
     
+     public void Factory() throws IOException{
+        
+
+      
+        System.out.println("Ingrese tipo de mapa a implementar: ");
+        System.out.println("1. HashMAP");
+        System.out.println("2. TreeMAP");
+        System.out.println("3. LinkedHashMap");
+        Integer optionMAP = Integer.parseInt(br.readLine());
+
+     
+        collection = factoryMap.getMap(optionMAP);
+        inventary = factoryMap.getMap(optionMAP);
+        
+    }
+    
     public void leerOperaciones(File Datos) throws IOException{
         //método para leer todas las operaciones dentro del archivo
         String caracter="",cadena;
@@ -69,8 +85,8 @@ public class Controlador     {
         leer = new FileReader(Datos);
         almacenamiento = new BufferedReader(leer);
         
-         while (caracter!= null){
-             caracter=almacenamiento.readLine();
+         while ((caracter=almacenamiento.readLine()) != null){
+             
              cadena=caracter;
              String[] products = caracter.replace("|", ",").split(",");
                 String category = products[0].trim().toUpperCase();
@@ -97,22 +113,7 @@ public class Controlador     {
     }
     
     
-    public void Factory() throws IOException{
-        
-
-        // Implementar patron de diseño Factory para seleccionar que tipo de MAP
-        // utilizara
-        System.out.println("Ingrese tipo de mapa a implementar: ");
-        System.out.println("1. HashMAP");
-        System.out.println("2. TreeMAP");
-        System.out.println("3. LinkedHashMap");
-        Integer optionMAP = Integer.parseInt(br.readLine());
-
-        // Instanciar el tipo de MAP que se utilizara
-        collection = factoryMap.getMap(optionMAP);
-        inventary = factoryMap.getMap(optionMAP);
-        
-    }
+   
     
     public void addProductToCollection() throws IOException {
 
