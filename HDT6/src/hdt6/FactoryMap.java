@@ -5,10 +5,8 @@
 package hdt6;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.TreeMap;
+
 
 /**
  *
@@ -27,17 +25,17 @@ public class FactoryMap {
                 myMap = new HashMapClass<String, List<String>>();
             case 2:
                 // TreeMap
-                myMap =  new TreeMap<String, List<String>>();
+                myMap =  new TreeMapClass<String, List<String>>();
             case 3:
                 // LinkedHashMap
-                myMap =  new LinkedHashMap<String, List<String>>();
+                myMap =  new LinkedHashMapClass<String, List<String>>();
             default:
                 myMap = null;
                 break;     
-            return myMap;
+            
         }
 
-        return null;
+        return myMap;
     }
    
 }

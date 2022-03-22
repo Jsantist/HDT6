@@ -33,7 +33,7 @@ public class Controlador     {
         return inventary;
     }
     
-    String a = "hola";
+    
     
     
     BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
