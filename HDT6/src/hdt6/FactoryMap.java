@@ -24,7 +24,7 @@ public class FactoryMap {
         switch (implementacion) {
             case 1:
                 // HashMap
-                myMap = new HashMap<String, List<String>>();
+                myMap = new HashMapClass<String, List<String>>();
             case 2:
                 // TreeMap
                 myMap =  new TreeMap<String, List<String>>();
