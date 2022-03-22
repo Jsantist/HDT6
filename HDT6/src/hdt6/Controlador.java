@@ -44,6 +44,23 @@ public class Controlador     {
     private List<String> categories = new ArrayList<String>();
     
     
+    public void newOperation(File datos) throws IOException{
+        //método para ingresar una nueva operación en caso de que no exista ninguna 
+        BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+        escribir= new FileWriter(datos,true);
+        linea = new PrintWriter(escribir);
+        
+        System.out.println("Ingrese un producto y su clasificación");
+        String cadena= br.readLine();
+        
+        
+        linea.println(cadena);
+       
+        linea.close();
+        escribir.close();
+        
+    }
+    
     public void leerOperaciones(File Datos) throws IOException{
         //método para leer todas las operaciones dentro del archivo
         String caracter="",cadena;
@@ -53,33 +70,26 @@ public class Controlador     {
         almacenamiento = new BufferedReader(leer);
         
          while (caracter!= null){
-             cont = cont+1;
              caracter=almacenamiento.readLine();
              cadena=caracter;
-             String[] products = cadena.replace("|", ",").split(",");
+             String[] products = caracter.replace("|", ",").split(",");
                 String category = products[0].trim().toUpperCase();
                 String product = products[1].trim();
 
-                try {
-
-                    // Revisa si existe la categoria, si no existe la crea
-                    if (inventary.get(category) != null) { // Existe la categoria
-
-                        List<String> currentList = inventary.get(category);
-                        currentList.add(product);
-                        inventary.put(category, currentList);
-
-                    } else { // No existe la categoria
-
-                        List<String> newList = new ArrayList<String>();
-                        newList.add(product);
-                        inventary.put(category, newList);
-                        categories.add(category);
-
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("[!] Error al agregar producto al inventario");
+                // Revisa si existe la categoria, si no existe la crea
+                if (inventary.get(category) != null) { // Existe la categoria
+                    
+                    List<String> currentList = inventary.get(category);
+                    currentList.add(product);
+                    inventary.put(category, currentList);
+                    
+                } else { // No existe la categoria
+                    
+                    List<String> newList = new ArrayList<String>();
+                    newList.add(product);
+                    inventary.put(category, newList);
+                    categories.add(category);
+                    
                 }
              
          }
@@ -106,17 +116,17 @@ public class Controlador     {
     
     public void addProductToCollection() throws IOException {
 
-        Boolean isActive = true;
+        Boolean Terminar = true;
 
-        while (isActive) {
+        while (Terminar) {
 
-            System.out.println("\n :: AGREGAR PRODUCTOS A LA COLECCION ::");
+            System.out.println("Agregar productos a la colección");
 
-            System.out.print("\n-> Ingrese el nombre de una category (X -> salir): ");
+            System.out.print("\n-> Ingrese el nombre de una categoría, si desea salir pulse la tecla <<s>>: ");
             String category = br.readLine().toUpperCase();
 
             if (category.equals("X")) {
-                isActive = false;
+                Terminar = false;
                 break;
 
             } else {
@@ -192,7 +202,7 @@ public class Controlador     {
      * Busca el producto en el inventario y muestra de que categoria es
      */
     public void showCategoryOfAProduct() throws IOException {
-        System.out.println("\n :: MOSTRAR CATEGORIA DE UN PRODUCTO ::\n");
+        System.out.println("\n Categoría de un producto\n");
 
         System.out.print("-> Ingrese el nombre de un producto: ");
         String product = br.readLine();

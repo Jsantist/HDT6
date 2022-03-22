@@ -10,13 +10,13 @@ import java.util.Objects;
  *
  * @author jsken
  */
-public class HashMap<K, V> implements IMap<K, V>{
+public class HashMapClass<K, V> implements IMap<K, V>{
 
     private int CAPACITY = 10;
     private MyMapBucket[] bucket;
     private int size = 0;
 
-    public HashMap() {
+    public HashMapClass() {
         this.bucket = new MyMapBucket[CAPACITY];
     }
 

@@ -4,6 +4,7 @@
  */
 package hdt6;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,17 +15,26 @@ import java.util.TreeMap;
  * @author jsken
  */
 public class FactoryMap {
-    public IMap<String, List<String>> getMap(Integer implementacion) {
+    
+    
+    public IMap<String, List<String>> getMap(int implementacion) throws IOException {
+        
+        IMap<String, List<String>> myMap;
 
-        if (implementacion.equals(1)) { // HashMap
-            return (IMap<String, List<String>>) new HashMap<String, List<String>>();
-
-        } else if (implementacion.equals(2)) { // TreeMap
-            return (IMap<String, List<String>>) new TreeMap<String, List<String>>();
-
-        } else if (implementacion.equals(3)) { // LinkedHashMap
-            return (IMap<String, List<String>>) new LinkedHashMap<String, List<String>>();
-
+        switch (implementacion) {
+            case 1:
+                // HashMap
+                myMap = new HashMap<String, List<String>>();
+            case 2:
+                // TreeMap
+                myMap =  new TreeMap<String, List<String>>();
+            case 3:
+                // LinkedHashMap
+                myMap =  new LinkedHashMap<String, List<String>>();
+            default:
+                myMap = null;
+                break;     
+            return myMap;
         }
 
         return null;
