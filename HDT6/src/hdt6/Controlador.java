@@ -18,12 +18,15 @@ import java.util.List;
  *
  * @author jsken
  */
-public class Controlador {
+public class Controlador<T> {
     FileReader leer;
     FileWriter escribir;
     PrintWriter linea;
     BufferedReader almacenamiento;
     
+    BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
+    
+    private FactoryMap factoryMap = new FactoryMap();
     private IMap<String, List<String>> collection;
     private IMap<String, List<String>> inventary;
     private List<String> categories = new ArrayList<String>();
@@ -70,4 +73,26 @@ public class Controlador {
          }
         
     }
+    
+    
+    public T Factory(){
+        System.out.println(" :: TIENDA ONLINE ::");
+
+        // Implementar patron de diseño Factory para seleccionar que tipo de MAP
+        // utilizara
+        System.out.println("Ingrese que MAP implementara: ");
+        System.out.println("1. HashMAP");
+        System.out.println("2. TreeMAP");
+        System.out.println("3. LinkedHashMap");
+        Integer optionMAP = Integer.parseInt(br.readLine());
+
+        // Instanciar el tipo de MAP que se utilizara
+        collection = factoryMap.getMap(optionMAP);
+        inventary = factoryMap.getMap(optionMAP);
+        
+        return 
+    }
+    
+    
+    
 }
