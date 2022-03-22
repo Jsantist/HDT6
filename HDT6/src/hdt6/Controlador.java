@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,28 +24,16 @@ public class Controlador {
     PrintWriter linea;
     BufferedReader almacenamiento;
     
-    public void newOperation(File datos) throws IOException{
-        //método para ingresar una nueva operación en caso de que no exista ninguna 
-        BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
-        escribir= new FileWriter(datos,true);
-        linea = new PrintWriter(escribir);
-        
-        System.out.println("Ingrese una operacion");
-        String cadena= br.readLine();
-        
-        
-        linea.println(cadena);
-       
-        linea.close();
-        escribir.close();
-        
-    }
+    private IMap<String, List<String>> collection;
+    private IMap<String, List<String>> inventary;
+    private List<String> categories = new ArrayList<String>();
+    
     
     public void leerOperaciones(File Datos) throws IOException{
         //método para leer todas las operaciones dentro del archivo
         String caracter="",cadena;
         int cont=0;
-        Datos = new File("datos.txt");
+        Datos = new File("ListadoProducto.txt");
         leer = new FileReader(Datos);
         almacenamiento = new BufferedReader(leer);
         
@@ -51,6 +41,31 @@ public class Controlador {
              cont = cont+1;
              caracter=almacenamiento.readLine();
              cadena=caracter;
+             String[] products = cadena.replace("|", ",").split(",");
+                String category = products[0].trim().toUpperCase();
+                String product = products[1].trim();
+
+                try {
+
+                    // Revisa si existe la categoria, si no existe la crea
+                    if (inventary.get(category) != null) { // Existe la categoria
+
+                        List<String> currentList = inventary.get(category);
+                        currentList.add(product);
+                        inventary.put(category, currentList);
+
+                    } else { // No existe la categoria
+
+                        List<String> newList = new ArrayList<String>();
+                        newList.add(product);
+                        inventary.put(category, newList);
+                        categories.add(category);
+
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("[!] Error al agregar producto al inventario");
+                }
              
          }
         

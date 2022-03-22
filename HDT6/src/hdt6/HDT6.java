@@ -25,19 +25,7 @@ public class HDT6 {
         
         System.out.println("Bienvenido a la tiendita online ");
         //si no existe ningún archivo, este lo crea. De lo contrario procede a operar
-        if (!Archivo.exists()){
-            try{
-                Archivo.createNewFile();
-                System.out.println("Al parecer no hay inventario, por favor ingrese uno nuevo ");
-                dat.newOperation(Archivo);
-                dat.leerOperaciones(Archivo);
-                
-            }catch(IOException ex){
-                System.out.println(ex);
-            }
-        }else{
-            dat.leerOperaciones(Archivo);
-        }
+        
     }
     
 }
